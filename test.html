@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        
+        <div id="container">
+            <input type="date" id="foo"><br>
+            <button id="bar" onclick = test()>Submit</button>
+            
+        </div>
+        
+        <script>
+            
+            function test(){
+                console.log(document.getElementById("foo").value);
+                
+                var d2 = document.getElementById("foo").value;
+                var d2split = d2.split("-");
+                var day2 = d2split[2];
+                var month2 = d2split[1];
+                
+                console.log(d2split);
+            
+            }
+            
+        </script>
+        
+    </body>
+</html>
