@@ -28,6 +28,22 @@ var albumMarconi = {
     ]
 };
 
+var albumEinstein = {
+    title: 'Relativity',
+    artist: 'Albert Einstein',
+    label: 'Physics',
+    year: '1915',
+    albumArtUrl: 'assets/images/album_covers/19.png',
+    songs: [
+        {title: 'Geometry', duration: '1:21'},
+        {title: 'Tensors', duration: '3:54'},
+        {title: 'Calculus' , duration: '4:15'},
+        {title: 'Quasar' , duration: '1:15'},
+        {title: 'Black Hole' , duration: 'Infinity'},
+    ]
+};
+
+
 var createSongRow = function(songNumber, songName, songLength){
     var template = 
         '<tr class="album-view-song-item">' 
@@ -66,9 +82,27 @@ var setCurrentAlbum = function(album){
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 
+var switchAlbum = 0;
+
+var switcheroo = function(){
+    if (switchAlbum == 1){
+    setCurrentAlbum(albumMarconi);
+    switchAlbum = 2;
+    } else if (switchAlbum == 2){
+        setCurrentAlbum(albumEinstein);
+        switchAlbum = 3;
+    } else if(switchAlbum == 3){
+        setCurrentAlbum(albumPicasso);
+        switchAlbum = 1;
+    }
+}
+
+document.getElementById('albumSwitch').addEventListener('click', switcheroo);
+
 window.onload = function(){
     setCurrentAlbum(albumPicasso);
-    
+    switchAlbum = 1;
+  
     songListContainer.addEventListener('mouseover', function(event) {
         if (event.target.parentElement.className === 'album-view-song-item') {
              event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
@@ -85,6 +119,7 @@ window.onload = function(){
          });
      }
 }
+
 
 
 
