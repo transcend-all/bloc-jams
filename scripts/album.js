@@ -121,7 +121,7 @@ window.onload = function(){
 }
 
 
-
+document.querySelector('.column half').innerHTML("FUCK!!!!");
 
 
 
