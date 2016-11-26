@@ -52,6 +52,7 @@ var createSongRow = function(songNumber, songName, songLength){
         +' <td class="song-item-duration">' + songLength + '</td>'
         + '</tr>'
     ;
+    
     var $row = $(template);
     
     var clickHandler = function(){
@@ -72,6 +73,9 @@ var createSongRow = function(songNumber, songName, songLength){
             
     }
     
+    
+    
+    
     var onHover = function(event){
         var songNumberCell = 
             $(this).find('song-item-number');
@@ -90,7 +94,10 @@ var createSongRow = function(songNumber, songName, songLength){
         }
     }
     
+    
+    
     $row.find('.song-item-number').click(clickHandler);
+    
     $row.hover(onHover, offHover);
     return $row;
     
@@ -143,6 +150,12 @@ document.getElementById('albumSwitch').addEventListener('click', switcheroo);
 
 $(document).ready(function(){
     setCurrentAlbum(albumPicasso);
+    
+    for (var i=0;i<songRows.length;i++){
+        songRows[i].addEventListener('click', function(event){
+           clickHandler(event.target); 
+        });
+    }
 });
 
 
